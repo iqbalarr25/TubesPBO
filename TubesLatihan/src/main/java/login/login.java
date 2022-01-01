@@ -4,6 +4,7 @@
  */
 package login;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,6 +21,7 @@ public class login extends javax.swing.JFrame {
      * Creates new form login
      */
     public login() {
+        
         initComponents();
     }
 
@@ -40,15 +42,20 @@ public class login extends javax.swing.JFrame {
         password_tf = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 255, 0));
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 153));
         jLabel2.setText("Username");
 
         username_tf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        username_tf.setForeground(new java.awt.Color(204, 0, 204));
         username_tf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 username_tfActionPerformed(evt);
@@ -56,8 +63,10 @@ public class login extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 0, 153));
         jLabel3.setText("Password");
 
+        login_btn.setForeground(new java.awt.Color(102, 0, 153));
         login_btn.setText("Login");
         login_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +74,7 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        password_tf.setForeground(new java.awt.Color(204, 0, 204));
         password_tf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 password_tfActionPerformed(evt);

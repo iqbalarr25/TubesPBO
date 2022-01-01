@@ -18,6 +18,7 @@ import javax.swing.table.TableModel;
  * @author LENOVO
  */
 public class Homepage extends javax.swing.JFrame {
+    
     void tampilTabel(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,7 +30,7 @@ public class Homepage extends javax.swing.JFrame {
             ResultSet result = stm.executeQuery(sql);
             DefaultTableModel model = (DefaultTableModel) rumah_tb.getModel();
             while(result.next()){
-                model.addRow(new Object[]{result.getString(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5)});
+                model.addRow(new Object[]{result.getString(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5),result.getString(6),result.getString(7),result.getString(8),result.getString(9)});
                 rumah_tb.setModel(model);
             }
         }catch(Exception e){
@@ -80,6 +81,7 @@ public class Homepage extends javax.swing.JFrame {
         view_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,11 +100,11 @@ public class Homepage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Kota", "Carport", "Kamar Tidur", "Harga"
+                "ID Rumah", "No HP", "Harga", "Alamat", "Kota", "Provinsi", "Carport", "Kamar Tidur", "Kamar Mandi"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -210,7 +212,7 @@ public class Homepage extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(kamar_mandi_tf, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
@@ -222,7 +224,7 @@ public class Homepage extends javax.swing.JFrame {
                                     .addComponent(kota_tf, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(provinsi_tf, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 936, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,13 +297,17 @@ public class Homepage extends javax.swing.JFrame {
         try{
             if(rumah_tb.getSelectedRowCount()==1){
                 DefaultTableModel model = (DefaultTableModel) rumah_tb.getModel();
-                String namaLengkapDB = model.getValueAt(rumah_tb.getSelectedRow(), 0).toString();
-                String nik = no_hp_tf.getText();
-                String divisi = harga_tf.getText();
-                String jabatan = alamat_tf.getText();
-                String gaji = kota_tf.getText();
+                String idDb = model.getValueAt(rumah_tb.getSelectedRow(), 0).toString();
+                String noHp = no_hp_tf.getText();
+                String harga = harga_tf.getText();
+                String alamat = alamat_tf.getText();
+                String kota = kota_tf.getText();
+                String provinsi = provinsi_tf.getText();
+                String carport = carport_tf.getText();
+                String kamarTidur = kamar_tidur_tf.getText();
+                String kamarMandi = kamar_mandi_tf.getText();
                 
-                String sql = "update rumah set nik='"+nik+"', divisi='"+divisi+"', jabatan='"+jabatan+"', gaji='"+gaji+"' where nama_lengkap='"+namaLengkapDB+"'";
+                String sql = "update rumah set no_hp='"+noHp+"', harga='"+harga+"', alamat='"+alamat+"', kota='"+kota+"', provinsi='"+provinsi+"', carport='"+carport+"', kamar_tidur='"+kamarTidur+"', kamar_mandi='"+kamarMandi+"' where id_rumah='"+idDb+"'";
             
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/appiqbal","root","");
@@ -328,9 +334,9 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             DefaultTableModel model = (DefaultTableModel) rumah_tb.getModel();
-            String namaLengkapDB = model.getValueAt(rumah_tb.getSelectedRow(), 0).toString();
+            String idDb = model.getValueAt(rumah_tb.getSelectedRow(), 0).toString();
             
-            String sql = "DELETE FROM rumah WHERE nama_lengkap='"+namaLengkapDB+"'";
+            String sql = "DELETE FROM rumah WHERE id_rumah='"+idDb+"'";
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/appiqbal","root","");
 
@@ -346,13 +352,17 @@ public class Homepage extends javax.swing.JFrame {
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
         // TODO add your handling code here:
         try{
-            String nik = no_hp_tf.getText();
-            String divisi = harga_tf.getText();
-            String jabatan = alamat_tf.getText();
-            String gaji = kota_tf.getText();
-            
-            String sql = "insert into rumah values ('"+nik+"','"+divisi+"','"+jabatan+"','"+gaji+"')";
-            
+            String noHp = no_hp_tf.getText();
+            String harga = harga_tf.getText();
+            String alamat = alamat_tf.getText();
+            String kota = kota_tf.getText();
+            String provinsi = provinsi_tf.getText();
+            String carport = carport_tf.getText();
+            String kamarTidur = kamar_tidur_tf.getText();
+            String kamarMandi = kamar_mandi_tf.getText();
+                
+            String sql = "insert into rumah(no_hp,harga,alamat,kota,provinsi,carport,kamar_tidur,kamar_mandi) values ('"+noHp+"','"+harga+"','"+alamat+"','"+kota+"','"+provinsi+"','"+carport+"','"+kamarTidur+"','"+kamarMandi+"')";
+                
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/appiqbal","root","");
             
@@ -370,27 +380,37 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) rumah_tb.getModel();
         
-        String namaLengkap = model.getValueAt(rumah_tb.getSelectedRow(), 0).toString();
-        String nik = model.getValueAt(rumah_tb.getSelectedRow(), 1).toString();
-        String divisi = model.getValueAt(rumah_tb.getSelectedRow(), 2).toString();
-        String jabatan = model.getValueAt(rumah_tb.getSelectedRow(), 3).toString();
-        String gaji = model.getValueAt(rumah_tb.getSelectedRow(), 4).toString();
+        String noHp = model.getValueAt(rumah_tb.getSelectedRow(), 1).toString();
+        String harga = model.getValueAt(rumah_tb.getSelectedRow(), 2).toString();
+        String alamat = model.getValueAt(rumah_tb.getSelectedRow(), 3).toString();
+        String kota = model.getValueAt(rumah_tb.getSelectedRow(), 4).toString();
+        String provinsi = model.getValueAt(rumah_tb.getSelectedRow(), 5).toString();
+        String carport = model.getValueAt(rumah_tb.getSelectedRow(), 6).toString();
+        String kamarTidur = model.getValueAt(rumah_tb.getSelectedRow(), 7).toString();
+        String kamarMandi = model.getValueAt(rumah_tb.getSelectedRow(), 8).toString();
         
-        no_hp_tf.setText(nik);
-        harga_tf.setText(divisi);
-        alamat_tf.setText(jabatan);
-        kota_tf.setText(gaji);
-        
+        no_hp_tf.setText(noHp);
+        harga_tf.setText(harga);
+        alamat_tf.setText(alamat);
+        kota_tf.setText(kota);
+        provinsi_tf.setText(provinsi);
+        carport_tf.setText(carport);
+        kamar_tidur_tf.setText(kamarTidur);
+        kamar_mandi_tf.setText(kamarMandi);
     }//GEN-LAST:event_rumah_tbMouseClicked
 
     private void view_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_view_btnActionPerformed
     private void reset(){
-        no_hp_tf.setText("");
-        harga_tf.setText("");
-        alamat_tf.setText("");
-        kota_tf.setText("");
+        String noHp = no_hp_tf.getText();
+        String harga = harga_tf.getText();
+        String alamat = alamat_tf.getText();
+        String kota = kota_tf.getText();
+        String provinsi = provinsi_tf.getText();
+        String carport = carport_tf.getText();
+        String kamarTidur = kamar_tidur_tf.getText();
+        String kamarMandi = kamar_mandi_tf.getText();
         DefaultTableModel model = (DefaultTableModel) rumah_tb.getModel();
         model.setRowCount(0);
         tampilTabel();
