@@ -139,7 +139,7 @@ public class login extends javax.swing.JFrame {
         //login button
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/appiqbal","root","");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/appiqbal","root","root");
             
             String username = username_tf.getText();
             String password = password_tf.getText();
