@@ -144,7 +144,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_rumah_btnActionPerformed
 
     private void transaksi_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transaksi_btnActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:    
     }//GEN-LAST:event_transaksi_btnActionPerformed
 
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed

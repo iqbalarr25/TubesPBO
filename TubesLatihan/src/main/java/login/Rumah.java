@@ -289,7 +289,8 @@ public class Rumah extends javax.swing.JFrame {
                 }else if(Integer.parseInt(panjangLebar[0])*Integer.parseInt(panjangLebar[1]) > 54){
                     tipe = "A";
                 }
-                String sql = "update rumah set no_hp='"+noHp+"', harga='"+harga+"', alamat='"+alamat+"', kota='"+kota+"', provinsi='"+provinsi+"', carport='"+carport+"', kamar_tidur='"+kamarTidur+"', kamar_mandi='"+kamarMandi+"', luas_tanah='"+luasTanah+"', tipe='"+tipe+"' where id_rumah='"+idDb+"'";
+                int hargaAkhir = hitungHarga(Integer.parseInt(harga));
+                String sql = "update rumah set no_hp='"+noHp+"', harga='"+hargaAkhir+"', alamat='"+alamat+"', kota='"+kota+"', provinsi='"+provinsi+"', carport='"+carport+"', kamar_tidur='"+kamarTidur+"', kamar_mandi='"+kamarMandi+"', luas_tanah='"+luasTanah+"', tipe='"+tipe+"' where id_rumah='"+idDb+"'";
             
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tubespbo","root","");
@@ -351,7 +352,8 @@ public class Rumah extends javax.swing.JFrame {
             }else if(Integer.parseInt(panjangLebar[0])*Integer.parseInt(panjangLebar[1]) > 54){
                 tipe = "A";
             }
-            String sql = "insert into rumah(no_hp,harga,alamat,kota,provinsi,carport,kamar_tidur,kamar_mandi,luas_tanah,tipe) values ('"+noHp+"','"+harga+"','"+alamat+"','"+kota+"','"+provinsi+"','"+carport+"','"+kamarTidur+"','"+kamarMandi+"','"+luasTanah+"','"+tipe+"')";
+            int hargaAkhir = hitungHarga(Integer.parseInt(harga));
+            String sql = "insert into rumah(no_hp,harga,alamat,kota,provinsi,carport,kamar_tidur,kamar_mandi,luas_tanah,tipe) values ('"+noHp+"','"+hargaAkhir+"','"+alamat+"','"+kota+"','"+provinsi+"','"+carport+"','"+kamarTidur+"','"+kamarMandi+"','"+luasTanah+"','"+tipe+"')";
                 
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tubespbo","root","");
@@ -414,6 +416,8 @@ public class Rumah extends javax.swing.JFrame {
     }
     
     private int hitungHarga(int harga){
+        int hargaKomisi = harga / 50;
+        harga += hargaKomisi;
         return harga;
     }
     /**
