@@ -151,8 +151,8 @@ public class Login extends javax.swing.JFrame {
             
             if(result.next()){
                 dispose();
-                Rumah rumah = new Rumah(username);
-                rumah.setVisible(true);
+                Dashboard dashboard = new Dashboard(username);
+                dashboard.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(this, "username or password wrong.");
                 username_tf.setText("");    

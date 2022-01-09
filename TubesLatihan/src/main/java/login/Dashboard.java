@@ -145,6 +145,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void transaksi_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transaksi_btnActionPerformed
         // TODO add your handling code here:    
+        dispose();
+        Trans trans = new Trans(username);
+        trans.setVisible(true);
     }//GEN-LAST:event_transaksi_btnActionPerformed
 
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
