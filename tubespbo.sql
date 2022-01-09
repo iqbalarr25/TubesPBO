@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2022 at 05:42 AM
+-- Generation Time: Jan 09, 2022 at 05:49 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `rumah` (
-  `id_rumah` int(11) NOT NULL,
+  `id_rumah` bigint(20) NOT NULL,
   `no_hp` varchar(191) NOT NULL,
-  `harga` int(11) NOT NULL,
+  `harga` bigint(20) NOT NULL,
   `alamat` varchar(2000) NOT NULL,
   `kota` varchar(191) NOT NULL,
   `provinsi` varchar(191) NOT NULL,
@@ -117,7 +117,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `rumah`
 --
 ALTER TABLE `rumah`
-  MODIFY `id_rumah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250413;
+  MODIFY `id_rumah` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250413;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
