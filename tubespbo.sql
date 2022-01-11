@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2022 at 05:49 AM
+-- Generation Time: Jan 11, 2022 at 09:08 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -48,8 +48,8 @@ CREATE TABLE `rumah` (
 INSERT INTO `rumah` (`id_rumah`, `no_hp`, `harga`, `alamat`, `kota`, `provinsi`, `carport`, `kamar_tidur`, `kamar_mandi`, `luas_tanah`, `tipe`) VALUES
 (250409, '082113313733', 1500000000, 'Dukuh Bima Asri No 71', 'Bekasi', 'Jawa Barat', '2', '5', '2', '12x24', 'C'),
 (250410, '082113313733', 1500000000, 'Dukuh Bima Asri No 71', 'Bekasi', 'Jawa Barat', '2', '5', '2', '12x24', 'A'),
-(250411, '1', 1, '1', '1', '1', '1', '1', '1', '25x26', 'A'),
-(250412, '1', 1, '1', '1', '1', '1', '1', '1', '6x4', 'C');
+(250413, '2', 102000, '2', '2', '2', '2', '2', '2', '2x2', 'C'),
+(250416, '123123123', 1020000, 'aw', 'aw', 'aw', 'aw', 'aw', 'aw', '12x34', 'A');
 
 -- --------------------------------------------------------
 
@@ -62,8 +62,20 @@ CREATE TABLE `transaksi` (
   `pembeli` varchar(365) NOT NULL,
   `metode_pembayaran` varchar(365) NOT NULL,
   `id_rumah` int(11) NOT NULL,
+  `harga` bigint(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `pembeli`, `metode_pembayaran`, `id_rumah`, `harga`, `created_at`) VALUES
+(40, 'iqbalss', 'Cicilan', 250410, 12625000, '2022-01-09 14:02:07'),
+(41, 'Iqbal Arrafi', 'Cicilan', 250410, 12625000, '2022-01-09 15:37:40'),
+(42, 'iqbal gantengs', 'Cash', 250416, 1020000, '2022-01-09 15:42:22'),
+(44, 'awdas', 'Cash', 250410, 1500000000, '2022-01-11 14:03:08'),
+(45, 'iqbal', 'Cicilan', 250410, 12625000, '2022-01-11 19:53:35');
 
 -- --------------------------------------------------------
 
@@ -117,13 +129,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `rumah`
 --
 ALTER TABLE `rumah`
-  MODIFY `id_rumah` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250413;
+  MODIFY `id_rumah` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250417;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `user`
